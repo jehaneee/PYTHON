@@ -1,0 +1,39 @@
+class TyphoonDirectory:
+    def __init__(self):
+        self.directory = {
+            "Agaton": ["March", 95],
+            "Basyang": ["July", 130],
+            "Caloy": ["July", 65],
+            "Domeng": ["August", 65],
+            "Ester": ["August", 95],
+            "Florita": ["August", 55],
+            "Glenda": ["August", 175],
+            "Henry": ["September", 65],
+            "Inday": ["September", 195],
+            "Juan": ["October", 305]
+        }
+
+
+    def get_typhoon_info(self, typhoon_name):
+        if typhoon_name in self.directory:
+            print(f"{typhoon_name}: {self.directory[typhoon_name][0]}, {self.directory[typhoon_name][1]} km/h")
+        else:
+            print(f"{typhoon_name} not found in the directory.")
+    
+    def new_typhoon(self, typhoon_name):
+        if typhoon_name in self.directory:
+            self.get_typhoon_info(typhoon_name)
+        else:
+            new_month = input(f"Enter the month for {typhoon_name}: ")
+            new_speed = int(input(f"Enter the speed for {typhoon_name} (in km/h): "))
+            self.directory[typhoon_name] = [new_month, new_speed]
+            print(f"{typhoon_name} has been added to the directory.")
+
+
+
+
+directory = TyphoonDirectory()
+x = input("Enter typoon name: ")
+directory.get_typhoon_info(x)
+new_typhoon = input("Enter the new typhoon name: ")
+directory.new_typhoon(new_typhoon)
