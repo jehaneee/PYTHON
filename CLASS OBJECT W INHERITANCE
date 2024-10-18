@@ -1,0 +1,20 @@
+class animal:
+    def __init__(self,breed,color):
+        self.breed=breed
+        self.color=color
+    def description(self):
+        print(f"the animal is {self.breed} and its color is {self.color}.")
+        
+class cat(animal):
+    def sound(self):
+        print("Meow, meow")
+class dog(animal):
+    def sound(self):
+        print("Woof, woof")
+        
+animal1=cat("Zanjoe","white")
+animal1.description()
+animal1.sound()
+animal1=dog("Manuel","brown")
+animal1.description()
+animal1.sound()
