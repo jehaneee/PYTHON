@@ -1,0 +1,22 @@
+import sys
+from PyQt5.QtWidgets import*
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super(MainWindow,self). __init__()
+        MainWidget=QWidget()
+        HLayout=QHBoxLayout()
+        MainWidget.setLayout(HLayout)
+        self.setCentralWidget(MainWidget)
+        self.textLabel1=QLabel("Hello")
+        self.pushButton=QPushButton()
+        self.pushButton=setText("Click me!")
+        HLayout.addWidget(self.textLabel1)
+        HLayout.addWidget(self.pushButton)
+        
+        if __name__=='__main__':
+            app=QApplication(sys.argv)
+            main=MainWindow()
+            main.show()
+            app.exec()
+        
