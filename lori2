@@ -1,0 +1,59 @@
+
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QFormLayout, QLineEdit, QPushButton, QLabel
+from PyQt5.QtCore import Qt
+
+class Info:
+    def __init__(self):
+        self.dictionary = {"Tiffania": "020403"}
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super(MainWindow, self).__init__()
+        self.resize(250, 150)
+
+        
+        main_widget = QWidget()
+        self.layout = QFormLayout()
+        main_widget.setLayout(self.layout)
+        self.setCentralWidget(main_widget)
+        self.user_line_edit = QLineEdit()
+        self.pass_line_edit = QLineEdit()
+        self.pass_line_edit.setEchoMode(QLineEdit.Password)
+
+        
+        self.submit_button = QPushButton("Submit")
+        self.cancel_button = QPushButton("Cancel")
+
+        
+        self.layout.addRow(QLabel("Username: "), self.user_line_edit)
+        self.layout.addRow(QLabel("Password: "), self.pass_line_edit)
+        self.layout.addRow(self.submit_button, self.cancel_button)
+
+        
+        self.result_label = QLabel("")
+        self.result_label.setAlignment(Qt.AlignCenter)
+        self.layout.addRow(self.result_label)
+
+       
+        self.submit_button.clicked.connect(self.access)
+
+    def access(self):
+       
+        info_item = Info()
+        username = self.user_line_edit.text()
+        password = self.pass_line_edit.text()
+
+        if username in info_item.dictionary and password == info_item.dictionary[username]:
+            self.result_label.setText("Access Granted!")
+            self.result_label.setStyleSheet("color: green;")
+        else:
+            self.result_label.setText("Username or password incorrect.")
+            self.result_label.setStyleSheet("color: red;")
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    main = MainWindow()
+    main.show()
+    sys.exit(app.exec_())
+
